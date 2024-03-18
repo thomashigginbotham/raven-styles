@@ -1,0 +1,34 @@
+@use 'sass:meta';
+@layer vars, resets, a11y, color, typography, decoration, layout, boxes;
+
+@layer vars {
+  @include meta.load-css('partials/vars');
+}
+
+@layer resets {
+  @include meta.load-css('partials/resets');
+}
+
+@layer a11y {
+  @include meta.load-css('partials/a11y');
+}
+
+@layer color {
+  @include meta.load-css('partials/color');
+}
+
+@layer typography {
+  @include meta.load-css('partials/typography');
+}
+
+@layer decoration {
+  @include meta.load-css('partials/decoration');
+}
+
+@layer layout {
+  @include meta.load-css('partials/layout');
+}
+
+@layer boxes {
+  @include meta.load-css('partials/boxes');
+}

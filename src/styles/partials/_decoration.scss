@@ -1,0 +1,75 @@
+/// Adds decorative elements.
+
+// Make options for separating elements.
+[data-separator]::before {
+  content: attr(data-separator);
+}
+
+// Add grid lines around and between elements.
+[data-grid-lines]:where([data-rows]) {
+  border-width: var(--thick-sm);
+  border-style: solid;
+
+  > :where(*) {
+    border-block-width: var(--thick-sm);
+    border-block-style: solid;
+    border-block-color: inherit;
+  }
+
+  > :where(:first-child),
+  &:where(:not([data-gap], [data-gap-y])) > * {
+    border-block-start-width: 0;
+  }
+
+  > :where(:last-child) {
+    border-block-end-width: 0;
+  }
+}
+
+[data-grid-lines]:where([data-columns]) {
+  border-width: var(--thick-sm);
+  border-style: solid;
+
+  > * {
+    border-inline-width: var(--thick-sm);
+    border-inline-style: solid;
+    border-inline-color: inherit;
+  }
+
+  &:where(
+    :not([data-gap], [data-gap-x], [data-align-x])
+  ) > :where(*),
+  &:where(
+    :not([data-gap], [data-gap-x], [data-align-x^='space'])
+  ) > :where(:not(:first-child)),
+  &:where(
+    [data-columns='fill'],
+    [data-align-x='start'],
+    [data-align-x='space-between']
+  ) > :where(:first-child) {
+    border-inline-start-width: 0;
+  }
+
+  &:where([data-columns='fill'], :not([data-columns='wrap']):has(> [data-fill])),
+  &:where([data-align-x='end'], [data-align-x='space-between']),
+  &:where(:has([data-columns]:last-child)) {
+    > :where(:last-child) {
+      border-inline-end-width: 0;
+    }
+  }
+
+  &:where([data-columns='wrap']) > :where(*) {
+    border-block-start-width: var(--thick-sm);
+    border-block-start-style: solid;
+    border-block-start-color: inherit;
+  }
+
+  &:where(
+    [data-columns='wrap'][data-gap],
+    [data-columns='wrap'][data-gap-y]
+) > :where(*) {
+    border-block-end-width: var(--thick-sm);
+    border-block-end-style: solid;
+    border-block-end-color: inherit;
+  }
+}

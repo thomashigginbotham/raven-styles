@@ -1,0 +1,195 @@
+// Defines default CSS custom properties.
+
+// Define root variables.
+:root {
+  // Set core spacing values.
+  --micro-xxxs: 0.25rem;   // 4px
+  --micro-xxs: 0.5rem;     // 8px
+  --micro-xs: 0.75rem;     // 12px
+  --micro-sm: 1rem;        // 16px
+  --micro-md: 1.25rem;     // 20px
+  --micro-lg: 1.5rem;      // 24px
+  --micro-xl: 1.75rem;     // 28px
+  --micro-xxl: 2rem;       // 32px
+  --micro-xxxl: 2.25rem;   // 36px
+
+  --meso-xxxs: 3rem;       // 48px
+  --meso-xxs: 4.5rem;      // 72px
+  --meso-xs: 6rem;         // 96px
+  --meso-sm: 7.5rem;       // 120px
+  --meso-md: 9rem;         // 144px
+  --meso-lg: 10.5rem;      // 168px
+  --meso-xl: 12rem;        // 192px
+  --meso-xxl: 13.5rem;     // 216px
+  --meso-xxxl: 15rem;      // 240px
+
+  --macro-xxxs: 20.25rem;  // 324px
+  --macro-xxs: 31.5rem;    // 504px
+  --macro-xs: 42.75rem;    // 684px
+  --macro-sm: 54rem;       // 864px
+  --macro-md: 65.25rem;    // 1044px
+  --macro-lg: 76.5rem;     // 1224px
+  --macro-xl: 87.75rem;    // 1404px
+  --macro-xxl: 99rem;      // 1584px
+  --macro-xxxl: 110.25rem; // 1764px
+
+  // Define space/size tokens.
+  --pad-xs: var(--micro-xxxs);
+  --pad-sm: var(--micro-xxs);
+  --pad-md: var(--micro-md);
+  --pad-lg: var(--micro-xxl);
+  --pad-xl: var(--meso-xs);
+
+  --block-xs: var(--meso-xxxs);
+  --block-sm: var(--meso-xs);
+  --block-md: var(--meso-md);
+  --block-lg: var(--meso-xl);
+  --block-xl: var(--meso-xxxl);
+
+  --content-xs: var(--macro-xxxs);
+  --content-sm: var(--macro-xxs);
+  --content-md: var(--macro-xs);
+  --content-lg: var(--macro-md);
+  --content-xl: var(--macro-xxl);
+}
+
+// Define color variables for a light theme or dark-inverted elements.
+:root,
+[data-colors='light'],
+[data-theme='dark'] [data-colors='invert'],
+[data-theme='light'] [data-colors='normal'] {
+  // Set core, light-theme values.
+  --primary-1: #eef;
+  --primary-2: #ddf;
+  --primary-3: #ccf;
+  --primary-4: #99f;
+  --primary-5: #33f;
+  --primary-6: #00f;
+  --primary-7: #00d;
+  --primary-8: #00b;
+  --primary-9: #009;
+
+  --secondary-1: #efe;
+  --secondary-2: #dfd;
+  --secondary-3: #cfc;
+  --secondary-4: #9f9;
+  --secondary-5: #3f3;
+  --secondary-6: #0c0;
+  --secondary-7: #090;
+  --secondary-8: #060;
+  --secondary-9: #030;
+
+  --neutral-1: #f9f9f9;
+  --neutral-2: #eee;
+  --neutral-3: #ccc;
+  --neutral-4: #aaa;
+  --neutral-5: #888;
+  --neutral-6: #666;
+  --neutral-7: #444;
+  --neutral-8: #222;
+  --neutral-9: #111;
+
+  --light: #fff;
+  --dark: #000;
+
+  // Define light-theme color tokens.
+  --bg: var(--light);
+  --text: var(--dark);
+  --link: var(--primary-8);
+  --link-hover: var(--primary-7);
+  --link-focus: var(--link-hover);
+  --button: var(--primary-8);
+  --button-hover: var(--primary-7);
+  --button-focus: var(--button-hover);
+  --button-disabled: var(--neutral-7);
+  --button-secondary: var(--secondary-8);
+  --button-secondary-hover: var(--secondary-7);
+  --button-secondary-focus: var(--button-secondary-hover);
+}
+
+// Update color variables for a dark theme or light-inverted elements.
+[data-theme="dark"],
+[data-colors='dark'],
+[data-colors='invert'],
+[data-theme='light'] [data-colors='invert'],
+[data-theme='dark'] [data-colors='normal'] {
+  // Update core values for a dark theme.
+  --primary-1: #009;
+  --primary-2: #00b;
+  --primary-3: #00d;
+  --primary-4: #00f;
+  --primary-6: #99f;
+  --primary-7: #ccf;
+  --primary-8: #ddf;
+  --primary-9: #eef;
+
+  --secondary-1: #030;
+  --secondary-2: #060;
+  --secondary-3: #090;
+  --secondary-4: #0c0;
+  --secondary-6: #9f9;
+  --secondary-7: #cfc;
+  --secondary-8: #dfd;
+  --secondary-9: #efe;
+
+  --neutral-1: #111;
+  --neutral-2: #222;
+  --neutral-3: #444;
+  --neutral-4: #666;
+  --neutral-6: #aaa;
+  --neutral-7: #ccc;
+  --neutral-8: #eee;
+  --neutral-9: #f9f9f9;
+
+  --dark: #fff;
+  --light: #000;
+
+  // Update color tokens for a dark theme.
+  --bg: var(--light);
+  --text: var(--dark);
+  --link: var(--primary-8);
+  --link-hover: var(--primary-7);
+}
+
+// Define font variables.
+:root {
+  --font-xxxs: .75rem;  // 12px
+  --font-xxs: .875rem;  // 14px
+  --font-xs: 1rem;      // 16px
+  --font-sm: 1.25rem;   // 20px
+  --font-md: 1.5rem;    // 24px
+  --font-lg: 1.875rem;  // 30px
+  --font-xl: 2.25rem;   // 36px
+  --font-xxl: 3rem;     // 48px
+  --font-xxxl: 3.75rem; // 60px
+  --line-sm: 1.25;
+  --line-md: 1.5;
+  --line-lg: 1.75;
+  --font-standard: sans-serif;
+  --font-decorative: 'Lucida Sans Unicode', cursive;
+  --font-mono: monospace;
+  --bold: 700;
+  --normal: 400;
+  // TODO: Use `clamp` to set mobile font sizes for titles.
+  --title-xxl: var(--bold) var(--font-xxxl)/var(--line-sm) var(--font-decorative);
+  --title-xl: var(--bold) var(--font-xxl)/var(--line-sm) var(--font-decorative);
+  --title-lg: var(--bold) var(--font-xl)/var(--line-sm) var(--font-decorative);
+  --title-md: var(--bold) var(--font-lg)/var(--line-sm) var(--font-decorative);
+  --title-sm: var(--bold) var(--font-md)/var(--line-sm) var(--font-decorative);
+  --title-xs: var(--bold) var(--font-sm)/var(--line-md) var(--font-decorative);
+  --standard: var(--normal) var(--font-xs)/var(--line-md) var(--font-standard);
+  --eyebrow: var(--bold) var(--font-xs)/var(--line-md) var(--font-standard);
+  --feature: var(--normal) var(--font-sm)/var(--line-md) var(--font-standard);
+  --mono: var(--normal) var(--font-xxs)/var(--line-md) var(--font-mono);
+}
+
+// Define decoration variables.
+:root {
+  --thick-sm: 1px;
+  --thick-md: var(--micro-xxxs);
+  --thick-lg: var(--micro-xxs);
+  --round-sm: var(--micro-xxxs);
+  --round-md: var(--micro-xxs);
+  --round-lg: var(--micro-xs);
+  // TODO: Shadows.
+}

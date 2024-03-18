@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Raven Styles</title>
+  <link rel="stylesheet" href="../dist/styles/raven.css">
+  <script type="module" src="./scripts/raven.js"></script>
+</head>
+
+<!--
+  Body
+  * data-theme: Uses a light theme (default).
+-->
+<body data-theme="light">
+  <!--
+  Page Wrapper
+  * data-rows: Direct children are displayed as rows.
+  * data-height: Element takes the whole amount of its parent's height.
+  -->
+  <div data-rows data-height="whole">
+    <!--
+    Header Wrapper
+    * data-columns: Treats direct children as columns.
+    * data-align-x: Centers columns horizontally.
+    * data-pad-x: Adds horizontal padding.
+    * data-pad-x-md: Increases horizontal padding on medium viewports.
+    * data-pad-y: Adds vertical padding.
+    * data-text-x: Centers text.
+    * data-text-x-md: Aligns text to the left on medium viewports.
+    * data-bg: Sets the background color to "primary" (light or dark based on
+        the current theme).
+    * data-colors: Inverts the theme (dark if light or vice versa). (Set to
+        "normal" to revert back to global theme.)
+    -->
+    <div
+      data-columns
+      data-align-x="center"
+      data-pad-x="md"
+      data-pad-x-md="lg"
+      data-pad-y="lg"
+      data-text-x="center"
+      data-text-x-md="start"
+      data-bg="primary"
+      data-colors="invert"
+    >
+      <!--
+      Header
+      * data-gap: Adds a large gap between rows and columns.
+      * data-width: Sets the width to content's medium size.
+      * data-columns-md: Switches to column layout on medium viewports.
+      * data-align-x-md: Adds equal spacing between columns on medium viewports.
+      -->
+      <header
+        data-rows
+        data-gap="lg"
+        data-width="content-md"
+        data-columns-md
+        data-align-x-md="space-between"
+      >
+        <p><a href="/" data-no-wrap>Raven CSS</a></p>
+
+        <!--
+        Main Menu
+        * data-columns-md: Children become columns on medium viewports.
+        * data-width-md: List is as wide as its content's largest width.
+        * data-no-markers: List markers (bullets) are removed.
+        -->
+        <ul
+          data-columns-md
+          data-gap-md="md"
+          data-width-md="max-content"
+          data-no-markers
+        >
+          <li><a href="/">About Us</a></li>
+          <li><a href="/">News and Events</a></li>
+          <li><a href="/">Contact</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <!--
+    Main Content Wrapper
+    * data-fill: Fills the available height (or width when using columns).
+    * data-colors: Forces a light theme due to the background image.
+    -->
+    <main
+      id="main"
+      data-columns
+      data-align-x="center"
+      data-fill
+      data-pad-x="md"
+      data-pad-x-md="lg"
+      data-pad-y="lg"
+      data-colors="light"
+    >
+      <!--
+      Main Heading for Screen Readers
+      * data-visually-hidden: Hides content visually.
+      -->
+      <h1 data-visually-hidden>Main Content</h1>
+
+      <!--
+      Content Wrapper
+      * data-rows: Direct children will display as rows (until they convert
+          to columns when parent is medium width).
+      * data-columns-md: Children will display as columns when parent element is
+          medium width.
+      -->
+      <div
+        data-rows
+        data-columns-md
+        data-gap="md"
+        data-width="content-md"
+      >
+        <!--
+        Article Wrapper
+        * data-width-md: Width is 2/3 of parent's width when parent is medium
+            width.
+        -->
+        <article data-width-md="two-third">
+          <!--
+          Card
+          * data-align-y-sm: When parent is small width, children will
+              display as columns with their content aligned at the top.
+          -->
+          <div data-rows data-align-y-sm="start" data-gap="md">
+            <!--
+            Card Image
+            data-width-sm: Width is 1/3 of parent when parent is small width.
+            -->
+            <img
+              src="https://placehold.co/400x300"
+              alt="Placeholder image"
+              width="400"
+              height="300"
+              data-width-sm="third"
+            >
+
+            <!--
+            Card Content
+            data-fill-sm: Width takes up remaining space when parent is
+              small width.
+            -->
+            <div data-fill-sm>
+              <!--
+              Card Heading
+              * data-font-size: Uses a large font size.
+              -->
+              <h2 data-font-size="lg">Card Heading</h2>
+
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, molestias?</p>
+
+              <p><a href="/" aria-label="Read more about lorem ipsum">Read More</a></p>
+            </div>
+          </div>
+        </article>
+
+        <!--
+        Sidebar
+        * data-bg: Neutral colored background.
+        * data-shade-offset="1": Offsets the background color shade one level
+            (lighter for light colors, darker for dark colors).
+        -->
+        <aside
+          data-fill-md
+          data-pad="md"
+          data-bg="neutral"
+          data-shade-offset="1"
+        >
+          <p>This column fills the remaining space.</p>
+        </aside>
+      </div>
+    </main>
+
+    <!--
+    Footer Wrapper
+    * data-text: Text is secondary color.
+    * data-text-x: Centers the text horizontally.
+    * data-links: Links are primary color.
+    * data-colors: Footer is forced to dark theme.
+    -->
+    <div
+      data-columns
+      data-align-x="center"
+      data-pad-x="md"
+      data-pad-x-md="lg"
+      data-pad-y="lg"
+      data-bg="neutral"
+      data-text="secondary"
+      data-text-x="center"
+      data-text-x-md="start"
+      data-links="primary"
+      data-colors="dark"
+    >
+      <footer data-width="content-md" data-align-y-md="end" data-gap-md="md">
+        <div data-columns-md data-gap="md">
+          <ul data-no-markers>
+            <li><a href="/">Privacy Policy</a></li>
+            <li><a href="/">Terms and Conditions</a></li>
+          </ul>
+
+          <ul data-no-markers>
+            <li><a href="/">Facebook</a></li>
+            <li><a href="/">LinkedIn</a></li>
+          </ul>
+        </div>
+
+        <p
+          data-text-x-md="end"
+          data-no-wrap
+        >Copyright 2024. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

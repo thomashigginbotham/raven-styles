@@ -1,0 +1,234 @@
+/// Provides styles that effect changes in layout.
+
+// Use flexbox to display children as columns.
+$content-sizes: xs, sm, md, lg, xl;
+$pad-sizes: xs, sm, md, lg, xl;
+
+:where(:has(> [data-columns])) {
+  --gap-x: 0px;
+  container-type: inline-size;
+}
+
+:where([data-columns]) {
+  display: flex;
+}
+
+:where([data-columns='wrap']) {
+  flex-wrap: wrap;
+}
+
+:where([data-columns='fill'] > *) {
+  flex: 1;
+}
+
+:where([data-columns] > *) {
+  margin-block: 0;
+}
+
+@each $content-size in $content-sizes {
+  @container (min-width: env(--content-#{$content-size})) {
+    [data-columns-#{$content-size}] {
+      display: flex;
+      flex-direction: row;
+    }
+
+    :where([data-columns-#{$content-size}='fill'] > *) {
+      flex: 1;
+    }
+
+    :where([data-columns-#{$content-size}] > *) {
+      margin-block: 0;
+    }
+  }
+}
+
+// Use flexbox to display children as rows.
+:where(:has(> [data-rows])) {
+  --gap-y: 0px;
+  container-type: inline-size;
+}
+
+:where([data-rows]) {
+  display: flex;
+  flex-direction: column;
+}
+
+@each $content-size in $content-sizes {
+  @container (min-width: env(--content-#{$content-size})) {
+    [data-rows-#{$content-size}] {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+// Add column and row alignment options.
+[data-align-x='start'] {
+  justify-content: start;
+}
+
+[data-align-x='center'] {
+  justify-content: center;
+}
+
+[data-align-x='end'] {
+  justify-content: end;
+}
+
+[data-align-x='space-around'] {
+  justify-content: space-around;
+}
+
+[data-align-x='space-between'] {
+  justify-content: space-between;
+}
+
+[data-align-x='space-evenly'] {
+  justify-content: space-evenly;
+}
+
+[data-align-y='start'] {
+  align-items: start;
+}
+
+[data-align-y='center'] {
+  align-items: center;
+}
+
+[data-align-y='end'] {
+  align-items: end;
+}
+
+@each $content-size in $content-sizes {
+  @container (min-width: env(--content-#{$content-size})) {
+    [data-align-x-#{$content-size}='start'] {
+      justify-content: start;
+    }
+
+    [data-align-x-#{$content-size}='center'] {
+      justify-content: center;
+    }
+
+    [data-align-x-#{$content-size}='end'] {
+      justify-content: end;
+    }
+
+    [data-align-x-#{$content-size}='space-around'] {
+      justify-content: space-around;
+    }
+
+    [data-align-x-#{$content-size}='space-between'] {
+      justify-content: space-between;
+    }
+
+    [data-align-x-#{$content-size}='space-evenly'] {
+      justify-content: space-evenly;
+    }
+
+    [data-align-y-#{$content-size}='start'] {
+      align-items: start;
+    }
+
+    [data-align-y-#{$content-size}='center'] {
+      align-items: center;
+    }
+
+    [data-align-y-#{$content-size}='end'] {
+      align-items: end;
+    }
+  }
+}
+
+// Add gaps between columns and rows.
+[data-gap] {
+  column-gap: var(--gap-x, 0px);
+  row-gap: var(--gap-y, 0px);
+}
+
+[data-gap-x] {
+  column-gap: var(--gap-x, 0px);
+}
+
+[data-gap-y] {
+  row-gap: var(--gap-y, 0px);
+}
+
+@each $pad-size in $pad-sizes {
+  [data-gap='#{$pad-size}'] {
+    --gap-x: var(--pad-#{$pad-size});
+    --gap-y: var(--pad-#{$pad-size});
+  }
+
+  [data-gap-x='#{$pad-size}'] {
+    --gap-x: var(--pad-#{$pad-size});
+  }
+
+  [data-gap-y='#{$pad-size}'] {
+    --gap-y: var(--pad-#{$pad-size});
+  }
+}
+
+:where([data-columns]:not([data-gap]), [data-rows]:not([data-gap])) {
+  // Reset gap values to zero if not specified.
+  &:not([data-gap-x]) {
+    --gap-x: 0px;
+  }
+
+  &:not([data-gap-y]) {
+    --gap-y: 0px;
+  }
+}
+
+@each $content-size in $content-sizes {
+  @container (min-width: env(--content-#{$content-size})) {
+    [data-gap-#{$content-size}] {
+      column-gap: var(--gap-x, 0px);
+      row-gap: var(--gap-y, 0px);
+    }
+    
+    [data-gap-x-#{$content-size}] {
+      column-gap: var(--gap-x, 0px);
+    }
+    
+    [data-gap-y-#{$content-size}] {
+      row-gap: var(--gap-y, 0px);
+    }
+
+    @each $pad-size in $pad-sizes {
+      [data-gap-#{$content-size}='#{$pad-size}'] {
+        --gap-x: var(--pad-#{$pad-size});
+        --gap-y: var(--pad-#{$pad-size});
+      }
+
+      [data-gap-x-#{$content-size}='#{$pad-size}'] {
+        --gap-x: var(--pad-#{$pad-size});
+      }
+  
+      [data-gap-y-#{$content-size}='#{$pad-size}'] {
+        --gap-y: var(--pad-#{$pad-size});
+      }
+    }
+  }
+}
+
+// Allow elements to overlay each other.
+:has(> [data-overlay]) {
+  position: relative;
+}
+
+[data-overlay] {
+  position: absolute;
+}
+
+[data-overlay='start'] {
+  top: 0;
+}
+
+[data-overlay='center'] {
+  top: 50%;
+  translate: 0 -50%;
+}
+
+[data-overlay='end'] {
+  bottom: 0;
+}

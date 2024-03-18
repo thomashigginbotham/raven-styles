@@ -1,0 +1,175 @@
+/// Sets box-related properties such as width and padding.
+@use 'sass:math';
+
+/// Handles HTML attributes relating to width or height.
+///
+/// @param {string} $dimension      - Either "width" or "height".
+/// @param {string | boolean} $size - Responsive container size.
+@mixin dimensional-attributes($dimension: width, $size: false) {
+  $token-percentages: (
+    quarter: 25,
+    third: 33.333,
+    half: 50,
+    two-third: 66.667,
+    three-quarter: 75
+  );
+
+  $token-fixed-values: (
+    block-xs,
+    block-sm,
+    block-md,
+    block-lg,
+    block-xl,
+    content-xs,
+    content-sm,
+    content-md,
+    content-lg,
+    content-xl
+  );
+
+  $dimension-attribute: if($size, data-#{$dimension}-#{$size}, data-#{$dimension});
+  $axis: if($dimension == width, x, y);
+  $fill-attribute: if($size, data-fill-#{$size}, data-fill);
+
+  [#{$dimension-attribute}] {
+    max-#{$dimension}: 100%;
+  }
+
+  @each $key, $value in $token-percentages {
+    $dimension-value: calc(#{$value * 1%} - var(--gap-#{$axis}, 0px) * #{1 - math.div($value, 100)});
+
+    [#{$dimension-attribute}='#{$key}'] {
+      flex-basis: $dimension-value;
+      #{$dimension}: $dimension-value;
+    }
+  }
+
+  @each $token in $token-fixed-values {
+    [#{$dimension-attribute}='#{$token}'] {
+      flex-basis: var(--#{$token});
+      #{$dimension}: var(--#{$token});
+    }
+  }
+
+  [#{$dimension-attribute}='whole'] {
+    flex-basis: 100%;
+    #{$dimension}: 100%;
+  }
+  
+  [#{$dimension-attribute}='max-content'] {
+    flex-basis: max-content;
+    #{$dimension}: max-content;
+  }
+  
+  :where(:has(> [#{$fill-attribute}])) {
+    display: flex;
+  }
+  
+  [#{$fill-attribute}] {
+    flex-grow: 1;
+  }
+}
+
+/// Handles HTML attributes relating to padding.
+/// 
+/// @param {string | boolean} $size - Responsive container size.
+@mixin padding-attributes($size: false) {
+  $pad-list: sm, md, lg, xl;
+  $size-suffix: if($size, -#{$size}, #{''});
+
+  @each $pad-size in $pad-list {
+    [data-pad#{$size-suffix}='#{$pad-size}'] {
+      padding: var(--pad-#{$pad-size});
+    }
+  }
+
+  @each $pad-size in $pad-list {
+    [data-pad-x#{$size-suffix}='#{$pad-size}'] {
+      padding-inline: var(--pad-#{$pad-size});
+    }
+  }
+
+  @each $pad-size in $pad-list {
+    [data-pad-x-start#{$size-suffix}='#{$pad-size}'] {
+      padding-inline-start: var(--pad-#{$pad-size});
+    }
+  }
+
+  @each $pad-size in $pad-list {
+    [data-pad-x-end#{$size-suffix}='#{$pad-size}'] {
+      padding-inline-end: var(--pad-#{$pad-size});
+    }
+  }
+
+  @each $pad-size in $pad-list {
+    [data-pad-y#{$size-suffix}='#{$pad-size}'] {
+      padding-block: var(--pad-#{$pad-size});
+    }
+  }
+
+  @each $pad-size in $pad-list {
+    [data-pad-y-start#{$size-suffix}='#{$pad-size}'] {
+      padding-block-start: var(--pad-#{$pad-size});
+    }
+  }
+
+  @each $pad-size in $pad-list {
+    [data-pad-y-end#{$size-suffix}='#{$pad-size}'] {
+      padding-block-end: var(--pad-#{$pad-size});
+    }
+  }
+}
+
+// Create containers for elements with responsive children.
+$responsive-sizes: sm, md, lg;
+$box-attributes:
+  data-width,
+  data-height,
+  data-pad,
+  data-pad-x,
+  data-pad-x-start,
+  data-pad-x-end,
+  data-pad-y,
+  data-pad-y-start,
+  data-pad-y-end;
+
+%container-rules {
+  container-type: inline-size;
+  width: 100%;
+  overflow: auto;
+}
+
+@each $box-attribute in $box-attributes {
+  @each $responsive-size in $responsive-sizes {
+    :where(:has(> [#{$box-attribute}-#{$responsive-size}])) {
+      @extend %container-rules;
+    }
+  }
+}
+
+// Set width attributes.
+@include dimensional-attributes();
+
+@each $responsive-size in $responsive-sizes {
+  @container (min-width: env(--content-#{$responsive-size})) {
+    @include dimensional-attributes($size: #{$responsive-size});
+  }
+}
+
+// Set height attributes.
+@include dimensional-attributes($dimension: height);
+
+@each $responsive-size in $responsive-sizes {
+  @container (min-width: env(--content-#{$responsive-size})) {
+    @include dimensional-attributes($dimension: height, $size: #{$responsive-size});
+  }
+}
+
+// Set padding attributes.
+@include padding-attributes();
+
+@each $responsive-size in $responsive-sizes {
+  @container (min-width: env(--content-#{$responsive-size})) {
+    @include padding-attributes($size: #{$responsive-size});
+  }
+}

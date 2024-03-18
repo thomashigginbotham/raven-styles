@@ -1,0 +1,23 @@
+{
+  "name": "@raven/styles",
+  "version": "0.1.0",
+  "description": "A simple, opinionated CSS framework.",
+  "scripts": {
+    "start": "concurrently --kill-others \"npm run serve\" \"npm run sass:dev\"",
+    "sass:dev": "sass --watch --update --style=expanded src/styles:dist/styles",
+    "serve": "live-server --no-css-inject --open=\"src/grid.html\" --ignore=node_modules,*.scss"
+  },
+  "keywords": [
+    "raven",
+    "styles",
+    "css",
+    "framework"
+  ],
+  "author": "Thomas Higginbotham",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "live-server": "^1.2.2",
+    "sass": "^1.69.6"
+  }
+}

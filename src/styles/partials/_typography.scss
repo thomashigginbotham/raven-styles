@@ -1,0 +1,167 @@
+// Provides options for text.
+
+$content-sizes: xs, sm, md, lg, xl;
+
+// Set default fonts.
+body {
+  font: var(--standard);
+}
+
+h1 {
+  font: var(--title-xxl);
+}
+
+h2 {
+  font: var(--title-xl);
+}
+
+h3 {
+  font: var(--title-lg);
+}
+
+h4 {
+  font: var(--title-md);
+}
+
+h5 {
+  font: var(--title-sm);
+}
+
+h6 {
+  font: var(--title-xs);
+}
+
+// Add extra space above headings to separate them from previous content.
+:is(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+):where(:not(:first-child)) {
+  margin-block-start: var(--micro-xxxl);
+}
+
+// Add a little highlight to inline code markup.
+code {
+  padding-inline: var(--micro-xxxs);
+  background-color: var(--neutral-1);
+  font: var(--mono);
+}
+
+// Create containers for elements with responsive children.
+:has(> [data-text-x], > [data-text-y]) {
+  container-type: inline-size;
+}
+
+@each $content-size in $content-sizes {
+  :has(> [data-text-x-#{$content-size}]) {
+    container-type: inline-size;
+  }
+}
+
+// Add text alignment options.
+
+/// Adds support for text-alignment attributes.
+/// 
+/// @param {string} $content-size - The content size to target.
+@mixin text-alignments($content-size: null) {
+  $attr-name: data-text-x;
+
+  @if $content-size != null {
+    $attr-name: data-text-x-#{$content-size};
+  }
+
+  [#{$attr-name}='start'] {
+    text-align: start;
+    list-style-position: outside;
+  
+    :where(
+      ul#{&},
+      ul,
+      ol#{&},
+      ol
+    ) {
+      padding-inline-start: revert-layer;
+    }
+  }
+  
+  [#{$attr-name}='center'] {
+    text-align: center;
+    list-style-position: inside;
+  
+    :where(
+      ul#{&},
+      ul,
+      ol#{&},
+      ol
+    ) {
+      padding-inline-start: 0;
+    }
+  }
+  
+  [#{$attr-name}='end'] {
+    text-align: end;
+    list-style-position: inside;
+  
+    :where(
+      ul#{&},
+      ul,
+      ol#{&},
+      ol
+    ) {
+      padding-inline-start: 0;
+    }
+  }
+}
+
+@include text-alignments();
+
+@each $content-size in $content-sizes {
+  @container (min-width: env(--content-#{$content-size})) {
+    @include text-alignments($content-size);
+  }
+}
+
+// Prevent text from wrapping.
+[data-no-wrap] {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// Remove markers from lists.
+[data-no-markers] {
+  margin-block-start: 0;
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+// Set opt-in styles.
+.eyebrow {
+  font: var(--eyebrow);
+
+  + :where(h1, h2, h3, h4, h5, h6, .title-lg, .title-md, .title-sm) {
+    margin-block-start: 0;
+  }
+
+  &:not(:first-child) {
+    margin-block-start: var(--micro-xxxl);
+  }
+}
+
+.title-lg {
+  font: var(--title-lg);
+}
+
+.title-md {
+  font: var(--title-md);
+}
+
+.title-sm {
+  font: var(--title-sm);
+}
+
+.feature {
+  font: var(--feature);
+}

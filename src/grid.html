@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raven Grid System</title>
+  <link rel="stylesheet" href="../dist/styles/raven.css">
+  <script type="module" src="./scripts/raven.js"></script>
+</head>
+
+<body data-theme="light">
+  <main data-columns data-align-x="center">
+    <article data-pad="md" data-width="content-md">
+      <h1>Grid System</h1>
+      <p class="feature">A flexible grid system for making diverse layouts is a necessity for any CSS framework, and Raven doesn’t disappoint. Creating grids has never been easier!</p>
+
+      <p class="eyebrow">Minimal HTML</p>
+      <h2>Basic Columns Example</h2>
+      <p>To display child elements side by side as columns, add a <code>data-columns</code> attribute. It couldn’t be simpler!</p>
+
+      <div data-pad-y-start="md">
+        <div data-rows data-grid-lines>
+          <div data-pad="md">
+            <div
+              data-columns
+              data-bg="primary"
+              data-grid-lines
+              data-text-x="center"
+            >
+              <div data-pad="sm">Column</div>
+              <div data-pad="sm">Column</div>
+              <div data-pad="sm">Column</div>
+            </div>
+          </div>
+
+          <div data-pad="md" data-bg="neutral">
+            <pre><code>&lt;div data-columns&gt;
+  &lt;div&gt;Column&lt;/div&gt;
+  &lt;div&gt;Column&lt;/div&gt;
+  &lt;div&gt;Column&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <h3>What’s Happening?</h3>
+      <p>When the <code>data-columns</code> attribute is present, the direct child elements are displayed inline in a row.</p>
+      <p>By default, each column is only as wide as its contents. However, you can stretch the columns equally to fill out the row by adding the <code>data-fill</code> attribute to each column element or by setting the <code>data-columns</code> value to "fill".</p>
+
+      <div data-pad-y-start="md">
+        <div data-rows data-grid-lines>
+          <div data-rows data-gap="md" data-pad="md">
+            <div
+              data-columns
+              data-bg="primary"
+              data-grid-lines
+              data-text-x="center"
+            >
+              <div data-fill data-pad="sm">Column</div>
+              <div data-fill data-pad="sm">Column</div>
+              <div data-fill data-pad="sm">Column</div>
+            </div>
+
+            <div
+              data-columns="fill"
+              data-bg="primary"
+              data-grid-lines
+              data-text-x="center"
+            >
+              <div data-pad="sm">Column</div>
+              <div data-pad="sm">Column</div>
+              <div data-pad="sm">Column</div>
+              <div data-pad="sm">Column</div>
+            </div>
+          </div>
+
+          <div data-pad="md" data-bg="neutral">
+            <pre><code>&lt;div data-columns&gt;
+  &lt;div data-fill&gt;Column&lt;/div&gt;
+  &lt;div data-fill&gt;Column&lt;/div&gt;
+  &lt;div data-fill&gt;Column&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-columns="fill"&gt;
+  &lt;div&gt;Column&lt;/div&gt;
+  &lt;div&gt;Column&lt;/div&gt;
+  &lt;div&gt;Column&lt;/div&gt;
+  &lt;div&gt;Column&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <p class="eyebrow">Simple, Yet Flexible</p>
+      <h2>Column Widths</h2>
+      <p>The width of individual columns can be set with the <code>data-width</code> attribute. A small number of keyword values are available such as "half" and "three-quarter". This may seem limited compared to other CSS frameworks but is surprisingly robust and able to meet nearly any need.</p>
+      
+      <div data-pad-y-start="md">
+        <div data-rows data-grid-lines>
+          <div data-rows data-gap="md" data-pad="md">
+            <div
+              data-columns
+              data-bg="primary"
+              data-grid-lines
+              data-text-x="center"
+            >
+              <div data-width="quarter" data-pad="sm">¼</div>
+              <div data-width="half" data-pad="sm">½</div>
+              <div data-fill data-pad="sm">¼</div>
+            </div>
+
+            <div
+              data-columns
+              data-bg="primary"
+              data-grid-lines
+              data-text-x="center"
+            >
+              <div data-width="third" data-pad="sm">⅓</div>
+              <div data-fill data-pad="sm">⅔</div>
+            </div>
+
+            <div
+              data-columns
+              data-bg="primary"
+              data-grid-lines
+              data-text-x="center"
+            >
+              <div data-width="third" data-pad="sm">⅓</div>
+              <div data-width="quarter" data-pad="sm">¼</div>
+              <div data-fill data-pad="sm">Fill</div>
+            </div>
+
+            <div
+              data-columns
+              data-bg="primary"
+              data-grid-lines
+              data-text-x="center"
+            >
+              <div data-fill data-pad="sm">Fill</div>
+              <div data-fill data-pad="sm">Fill</div>
+              <div data-width="three-quarter" data-pad="sm">¾</div>
+            </div>
+          </div>
+
+          <div data-pad="md" data-bg="neutral">
+            <pre><code>&lt;div data-columns&gt;
+  &lt;div data-width="quarter"&gt;¼&lt;/div&gt;
+  &lt;div data-width="half"&gt;½&lt;/div&gt;
+  &lt;div data-width="quarter"&gt;¼&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-columns&gt;
+  &lt;div data-width="third"&gt;⅓&lt;/div&gt;
+  &lt;div data-width="two-third"&gt;⅔&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-columns&gt;
+  &lt;div data-width="third"&gt;⅓&lt;/div&gt;
+  &lt;div data-width="quarter"&gt;¼&lt;/div&gt;
+  &lt;div data-fill&gt;Fill&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-columns&gt;
+  &lt;div data-fill&gt;Fill&lt;/div&gt;
+  &lt;div data-fill&gt;Fill&lt;/div&gt;
+  &lt;div data-width="three-quarter"&gt;¾&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <p class="eyebrow">A Multitude of Layouts</p>
+      <h2>Nested Columns</h2>
+      <p>To create more complicated layouts, you can nest columns. See? We told you it was robust.</p>
+
+      <div data-pad-y-start="md">
+        <div data-rows data-grid-lines>
+          <div data-rows data-gap="md" data-pad="md">
+            <div
+              data-columns
+              data-align-y="center"
+              data-bg="primary"
+              data-shade-offset="1"
+              data-grid-lines
+              data-text-x="center"
+            >
+              <div data-width="third" data-pad="sm">⅓ of total<br>33.3%</div>
+
+              <div
+                data-fill
+                data-columns
+                data-grid-lines
+                data-bg="primary"
+              >
+                <div data-width="quarter" data-pad="sm">¼ of ⅔<br>16.7%</div>
+                <div data-fill data-pad="sm">¾ of ⅔<br>50%</div>
+              </div>
+            </div>
+          </div>
+
+          <div data-pad="md" data-bg="neutral">
+            <pre><code>&lt;div data-columns&gt;
+  &lt;div data-width="third"&gt;⅓ of total&lt;/div&gt;
+  &lt;div data-fill data-columns&gt;
+    &lt;div data-width="quarter"&gt;¼ of ⅔&lt;/div&gt;
+    &lt;div data-fill&gt;¾ of ⅔&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <p class="eyebrow">Vertical Layouts</p>
+      <h2>Row Example</h2>
+      <p>HTML block elements are already displayed vertically by default, but if you want to change their height in relation to each other, rows can be very helpful.</p>
+
+      <div data-pad-y-start="md">
+        <div data-rows data-grid-lines>
+          <div data-pad="md">
+            <div data-rows data-height="content-sm" data-grid-lines data-bg="primary">
+              <div data-pad="sm" data-bg="primary">Header Row</div>
+              <div data-fill data-pad="sm" data-bg="primary">Content Area</div>
+              <div data-pad="sm" data-bg="primary">Footer Row</div>
+            </div>
+          </div>
+
+          <div data-pad="md" data-bg="neutral">
+            <pre><code>&lt;div data-rows data-height="whole"&gt;
+  &lt;header&gt;Header Row&lt;/header&gt;
+  &lt;main data-fill&gt;Content Area&lt;/main&gt;
+  &lt;footer&gt;Footer Row&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <p class="eyebrow">The Easy Button for Multiple Rows</p>
+      <h2>Column Wrapping</h2>
+      <p>If you’d rather have columns wrap to new rows automatically, simply set the <code>data-columns</code> attribute to "wrap". Then, when there is not enough room in a row, the extra columns will wrap to a new row.</p>
+
+      <div data-pad-y-start="md">
+        <div data-rows data-grid-lines>
+          <div data-pad="md">
+            <div
+              data-columns="wrap"
+              data-gap="sm"
+              data-pad="sm"
+              data-bg="primary"
+              data-grid-lines
+              data-text-x="center"
+            >
+              <div data-width="block-md" data-pad="sm">Medium Block</div>
+              <div data-fill data-pad="sm">Fill</div>
+              <div data-width="block-md" data-pad="sm">Medium Block</div>
+              <div data-width="half" data-pad="sm">½</div>
+              <div data-width="half" data-pad="sm">½</div>
+              <div data-width="whole" data-pad="sm">Whole</div>
+            </div>
+          </div>
+
+          <div data-pad="md" data-bg="neutral">
+            <pre><code>&lt;div data-columns="wrap"&gt;
+  &lt;div data-width="block-md"&gt;Medium Block&lt;/div&gt;
+  &lt;div data-fill&gt;Fill&lt;/div&gt;
+  &lt;div data-width="block-md"&gt;Medium Block&lt;/div&gt;
+  &lt;div data-width="half"&gt;½&lt;/div&gt;
+  &lt;div data-width="half"&gt;½&lt;/div&gt;
+  &lt;div data-width="whole"&gt;Whole&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <p class="eyebrow">Consistent Spacing</p>
+      <h2>Row and Column Gaps</h2>
+      <p>Padding can be used to create space between rows and columns if you like, but it can become tedious to add it to every element—or worse, having to add more elements just for padding.</p>
+      <p>A better way is to make use of the <code>data-gap</code>, <code>data-gap-x</code>, and <code>data-gap-y</code> attributes.</p>
+
+      <div data-pad-y-start="md">
+        <div data-rows data-grid-lines>
+          <div data-pad="md" >
+            <div data-rows>
+              <div
+                data-rows
+                data-gap="sm"
+                data-pad="sm"
+                data-grid-lines
+                data-bg="primary"
+                data-shade-offset="1"
+              >
+                <div
+                  data-columns="fill"
+                  data-gap="md"
+                  data-text-x="center"
+                  data-bg="primary"
+                  data-shade-offset="1"
+                  data-grid-lines
+                >
+                  <div data-pad="sm" data-bg="primary">Column</div>
+                  <div data-pad="sm" data-bg="primary">Column</div>
+                  <div data-pad="sm" data-bg="primary">Column</div>
+                </div>
+
+                <div
+                  data-columns="fill"
+                  data-gap="md"
+                  data-text-x="center"
+                  data-bg="primary"
+                  data-shade-offset="1"
+                  data-grid-lines
+                >
+                  <div data-pad="sm" data-bg="primary">Column</div>
+                  <div data-pad="sm" data-bg="primary">Column</div>
+                  <div data-pad="sm" data-bg="primary">Column</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-pad="md" data-bg="neutral">
+            <pre><code>&lt;div data-rows data-gap="sm"&gt;
+  &lt;div data-columns="fill" data-gap="md"&gt;
+    &lt;div&gt;Column&lt;/div&gt;
+    &lt;div&gt;Column&lt;/div&gt;
+    &lt;div&gt;Column&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div data-columns="fill" data-gap="md"&gt;
+    &lt;div&gt;Column&lt;/div&gt;
+    &lt;div&gt;Column&lt;/div&gt;
+    &lt;div&gt;Column&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <p class="eyebrow">Arrange Your Columns</p>
+      <h2>Alignment</h2>
+      <p>Columns that do not fill their containers can be horizontally and vertically positioned using <code>data-align-x</code> and <code>data-align-y</code> respectively.</p>
+
+      <div data-pad-y-start="md">
+        <div data-rows data-grid-lines>
+          <div data-rows data-gap="md" data-pad="md">
+            <div
+              data-columns
+              data-align-x="start"
+              data-bg="primary"
+              data-shade-offset="1"
+              data-grid-lines
+            >
+              <div data-bg="primary" data-pad="sm">Start</div>
+              <div data-bg="primary" data-pad="sm">Start</div>
+              <div data-bg="primary" data-pad="sm">Start</div>
+            </div>
+
+            <div
+              data-columns
+              data-align-x="center"
+              data-bg="primary"
+              data-shade-offset="1"
+              data-grid-lines
+            >
+              <div data-bg="primary" data-pad="sm">Center</div>
+              <div data-bg="primary" data-pad="sm">Center</div>
+              <div data-bg="primary" data-pad="sm">Center</div>
+            </div>
+
+            <div
+              data-columns
+              data-align-x="end"
+              data-bg="primary"
+              data-shade-offset="1"
+              data-grid-lines
+            >
+              <div data-bg="primary" data-pad="sm">End</div>
+              <div data-bg="primary" data-pad="sm">End</div>
+              <div data-bg="primary" data-pad="sm">End</div>
+            </div>
+
+            <div
+              data-columns
+              data-align-x="space-around"
+              data-bg="primary"
+              data-shade-offset="1"
+              data-grid-lines
+            >
+              <div data-bg="primary" data-pad="sm">Space Around</div>
+              <div data-bg="primary" data-pad="sm">Space Around</div>
+              <div data-bg="primary" data-pad="sm">Space Around</div>
+            </div>
+
+            <div
+              data-columns
+              data-align-x="space-between"
+              data-bg="primary"
+              data-shade-offset="1"
+              data-grid-lines
+            >
+              <div data-bg="primary" data-pad="sm">Space Between</div>
+              <div data-bg="primary" data-pad="sm">Space Between</div>
+              <div data-bg="primary" data-pad="sm">Space Between</div>
+            </div>
+
+            <div
+              data-columns
+              data-align-x="space-evenly"
+              data-bg="primary"
+              data-shade-offset="1"
+              data-grid-lines
+            >
+              <div data-bg="primary" data-pad="sm">Space Evenly</div>
+              <div data-bg="primary" data-pad="sm">Space Evenly</div>
+              <div data-bg="primary" data-pad="sm">Space Evenly</div>
+            </div>
+
+            <div
+              data-columns="fill"
+              data-height="content-sm"
+              data-bg="primary"
+              data-grid-lines
+            >
+              <div
+                data-columns
+                data-align-x="center"
+                data-align-y="start"
+                data-bg="primary"
+                data-shade-offset="1"
+                data-pad="sm"
+              >
+                <div
+                  data-bg="primary"
+                  data-pad="sm"
+                  data-grid-lines
+                >Vertical Start</div>
+              </div>
+
+              <div
+                data-columns
+                data-align-x="center"
+                data-align-y="center"
+                data-bg="primary"
+                data-shade-offset="1"
+                data-pad="sm"
+              >
+                <div
+                  data-bg="primary"
+                  data-pad="sm"
+                  data-grid-lines
+                >Vertical Center</div>
+              </div>
+
+              <div
+                data-columns
+                data-align-x="center"
+                data-align-y="end"
+                data-bg="primary"
+                data-shade-offset="1"
+                data-pad="sm"
+              >
+                <div
+                  data-bg="primary"
+                  data-pad="sm"
+                  data-grid-lines
+                >Vertical End</div>
+              </div>
+            </div>
+          </div>
+
+          <div data-pad="md" data-bg="neutral">
+            <pre><code>&lt;div data-columns&gt;
+  &lt;div data-align-x="start"&gt;Start&lt;/div&gt;
+  &lt;div data-align-x="start"&gt;Start&lt;/div&gt;
+  &lt;div data-align-x="start"&gt;Start&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-columns&gt;
+  &lt;div data-align-x="center"&gt;Center&lt;/div&gt;
+  &lt;div data-align-x="center"&gt;Center&lt;/div&gt;
+  &lt;div data-align-x="center"&gt;Center&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-columns&gt;
+  &lt;div data-align-x="end"&gt;End&lt;/div&gt;
+  &lt;div data-align-x="end"&gt;End&lt;/div&gt;
+  &lt;div data-align-x="end"&gt;End&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-columns&gt;
+  &lt;div data-align-x="space-around"&gt;Space Around&lt;/div&gt;
+  &lt;div data-align-x="space-around"&gt;Space Around&lt;/div&gt;
+  &lt;div data-align-x="space-around"&gt;Space Around&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-columns&gt;
+  &lt;div data-align-x="space-between"&gt;Space Between&lt;/div&gt;
+  &lt;div data-align-x="space-between"&gt;Space Between&lt;/div&gt;
+  &lt;div data-align-x="space-between"&gt;Space Between&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-columns&gt;
+  &lt;div data-align-x="space-evenly"&gt;Space Evenly&lt;/div&gt;
+  &lt;div data-align-x="space-evenly"&gt;Space Evenly&lt;/div&gt;
+  &lt;div data-align-x="space-evenly"&gt;Space Evenly&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-columns data-height="content-sm"&gt;
+  &lt;div data-columns data-align-y="start"&gt;Vertical Start&lt;/div&gt;
+  &lt;div data-columns data-align-y="center"&gt;Vertical Center&lt;/div&gt;
+  &lt;div data-columns data-align-y="end"&gt;Vertical End&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <p class="eyebrow">Layouts Based on Container Width</p>
+      <h2>Responsive Changes</h2>
+      <p>The same column configuration for all screen sizes won’t cut it. Responsive design is nothing new and is supported by any major CSS framework. However, we’ve gone a step further.</p>
+      <p>Our columns are responsive to their parent container, not the viewport. That’s right. We have container queries! Resize the example below to try it yourself.</p>
+
+      <div data-pad-y-start="md">
+        <div
+          data-rows
+          data-grid-lines
+          style="width: calc(var(--content-sm) - 1rem); resize: horizontal; overflow: auto;"
+        >
+          <div data-pad="md">
+            <div data-rows data-grid-lines data-bg="primary">
+              <div
+                data-rows
+                data-columns-sm
+                data-gap="md"
+                data-bg="primary"
+                data-shade-offset="1"
+                data-text-x="center"
+              >
+                <div data-width-sm="quarter" data-pad="sm" data-bg="primary">Column</div>
+                <div data-width-sm="half" data-pad="sm" data-bg="primary">Column</div>
+                <div data-width-sm="quarter" data-pad="sm" data-bg="primary">Column</div>
+              </div>
+            </div>
+          </div>
+
+          <div data-pad="md" data-bg="neutral">
+            <pre><code>&lt;div data-rows data-columns-sm data-gap="md"&gt;
+  &lt;div data-width-sm="quarter"&gt;Item&lt;/div&gt;
+  &lt;div data-width-sm="half"&gt;Item&lt;/div&gt;
+  &lt;div data-width-sm="quarter"&gt;Item&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <h3>What’s Happening?</h3>
+      <p>The <code>data-rows</code> attribute means the three child elements display as rows by default. However, when the width of the row reaches the "small" range, the <code>data-columns-sm</code> attribute tells the row to display its children as columns.</p>
+      <p>Each of the child elements has a <code>data-width-sm</code> attribute that tells it what width it should be when its parent reaches the "small" width.</p>
+    </article>
+  </main>
+</body>
+</html>
