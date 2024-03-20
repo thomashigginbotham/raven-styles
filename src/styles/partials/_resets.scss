@@ -3,6 +3,9 @@
 // Make element dimensions easier to calculate.
 :where(*) {
   box-sizing: border-box;
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 // Make elements easier to vertically align.

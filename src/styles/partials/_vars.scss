@@ -49,7 +49,7 @@
   --content-xs: var(--macro-xxxs);
   --content-sm: var(--macro-xxs);
   --content-md: var(--macro-xs);
-  --content-lg: var(--macro-md);
+  --content-lg: var(--macro-sm);
   --content-xl: var(--macro-xxl);
 }
 
@@ -57,7 +57,8 @@
 :root,
 [data-colors='light'],
 [data-theme='dark'] [data-colors='invert'],
-[data-theme='light'] [data-colors='normal'] {
+[data-theme='light'] [data-colors='normal'],
+[data-colors='invert'] [data-colors='normal'] {
   // Set core, light-theme values.
   --primary-1: #eef;
   --primary-2: #ddf;
@@ -112,7 +113,8 @@
 [data-colors='dark'],
 [data-colors='invert'],
 [data-theme='light'] [data-colors='invert'],
-[data-theme='dark'] [data-colors='normal'] {
+[data-theme='dark'] [data-colors='normal'],
+[data-colors='normal'] [data-colors='invert'] {
   // Update core values for a dark theme.
   --primary-1: #009;
   --primary-2: #00b;

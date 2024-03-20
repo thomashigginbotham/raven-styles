@@ -150,6 +150,14 @@ code {
   }
 }
 
+.title-xxl {
+  font: var(--title-xxl);
+}
+
+.title-xl {
+  font: var(--title-xl);
+}
+
 .title-lg {
   font: var(--title-lg);
 }
@@ -160,6 +168,10 @@ code {
 
 .title-sm {
   font: var(--title-sm);
+}
+
+.title-xs {
+  font: var(--title-xs);
 }
 
 .feature {

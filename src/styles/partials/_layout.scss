@@ -211,6 +211,16 @@ $pad-sizes: xs, sm, md, lg, xl;
   }
 }
 
+// Allow elements to stick in place while scrolling.
+:has(> [data-sticky]) {
+  position: relative;
+}
+
+[data-sticky] {
+  position: sticky;
+  top: 0;
+}
+
 // Allow elements to overlay each other.
 :has(> [data-overlay]) {
   position: relative;

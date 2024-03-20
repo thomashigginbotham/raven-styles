@@ -73,3 +73,32 @@
     border-block-end-color: inherit;
   }
 }
+
+// Add drop-shadows.
+[data-shadow='sm'],
+[data-shadow='md'],
+[data-shadow='lg'] {
+  position: relative;
+}
+
+[data-shadow='sm'] {
+  z-index: 1;
+  box-shadow: 2px 2px 4px 0px hsl(from var(--dark) h s l / 35%);
+}
+
+[data-shadow='md'] {
+  z-index: 10;
+  box-shadow: 4px 4px 8px 0px hsl(from var(--dark) h s l / 25%),
+    8px 12px 24px 0px hsl(from var(--dark) h s l / 20%);
+}
+
+[data-shadow='lg'] {
+  z-index: 100;
+  box-shadow: 0px 8px 16px 0px hsl(from var(--dark) h s l / 25%),
+    0px 24px 28px 0px hsl(from var(--dark) h s l / 15%);
+}
+
+// Allow for blurred backgrounds.
+[data-bg-blur] {
+  backdrop-filter: blur(10px);
+}

@@ -8,7 +8,13 @@ export async function customEnvPolyfill() {
   /** @type {HTMLLinkElement[]}  */
   const styleSheets = [...document.querySelectorAll('link[rel="stylesheet"]')];
   const loadedPromises = styleSheets.map((styleSheet) => {
-    if (styleSheet.sheet.cssRules) {
+    try {
+      if (styleSheet.sheet.cssRules) {
+        return Promise.resolve();
+      }
+    } catch (e) {
+      // Style sheet's rules could not be loaded.
+      console.log(e);
       return Promise.resolve();
     }
 
@@ -21,12 +27,16 @@ export async function customEnvPolyfill() {
 
   // Insert new rules for each style sheet.
   styleSheets.forEach((styleSheet) => {
-    const newRules = getNewContainerRuleConditions(styleSheet.sheet.cssRules);
-    const styleElement = document.createElement('style');
+    try {
+      const newRules = getNewContainerRuleConditions(styleSheet.sheet.cssRules);
+      const styleElement = document.createElement('style');
 
-    newRules.forEach((newRule) => styleElement.textContent += newRule);
+      newRules.forEach((newRule) => styleElement.textContent += newRule);
 
-    document.head.appendChild(styleElement);
+      document.head.appendChild(styleElement);
+    } catch (e) {
+      console.log(e);
+    }
   });
 }
 

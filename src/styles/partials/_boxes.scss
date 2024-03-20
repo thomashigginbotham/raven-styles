@@ -136,7 +136,6 @@ $box-attributes:
 %container-rules {
   container-type: inline-size;
   width: 100%;
-  overflow: auto;
 }
 
 @each $box-attribute in $box-attributes {

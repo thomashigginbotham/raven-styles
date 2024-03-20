@@ -21,22 +21,17 @@
 
 // Set background color attributes.
 $color-list: primary, secondary, neutral;
+$opacities: (high: 95%, medium-high: 75%, medium: 50%, medium-low: 25%, low: 10%);
 
 @each $color in $color-list {
   [data-bg='#{$color}'] {
     border-color: var(--#{$color}-6);
     background-color: var(--#{$color}-1);
   
-    &[data-bg-opacity='high'] {
-      background-color: hsl(from var(--#{$color}-1) h s l / 90%);
-    }
-  
-    &[data-bg-opacity='medium'] {
-      background-color: hsl(from var(--#{$color}-1) h s l / 50%);
-    }
-  
-    &[data-bg-opacity='low'] {
-      background-color: hsl(from var(--#{$color}-1) h s l / 10%);
+    @each $key, $value in $opacities {
+      &[data-bg-opacity='#{$key}'] {
+        background-color: hsl(from var(--#{$color}-1) h s l / #{$value});
+      }
     }
   
     &[data-shade-offset='1'] {
@@ -49,6 +44,28 @@ $color-list: primary, secondary, neutral;
   
     &[data-shade-offset='3'] {
       background-color: var(--#{$color}-4);
+    }
+  }
+}
+
+[data-bg='light'] {
+  border-color: var(--neutral-6);
+  background-color: var(--light);
+  
+  @each $key, $value in $opacities {
+    &[data-bg-opacity='#{$key}'] {
+      background-color: hsl(from var(--light) h s l / #{$value});
+    }
+  }
+}
+
+[data-bg='dark'] {
+  border-color: var(--neutral-6);
+  background-color: var(--dark);
+  
+  @each $key, $value in $opacities {
+    &[data-bg-opacity='#{$key}'] {
+      background-color: hsl(from var(--dark) h s l / #{$value});
     }
   }
 }
