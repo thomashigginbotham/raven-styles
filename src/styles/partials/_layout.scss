@@ -32,6 +32,10 @@ $pad-sizes: xs, sm, md, lg, xl;
       flex-direction: row;
     }
 
+    :where([data-columns-#{$content-size}='wrap']) {
+      flex-wrap: wrap;
+    }
+
     :where([data-columns-#{$content-size}='fill'] > *) {
       flex: 1;
     }
